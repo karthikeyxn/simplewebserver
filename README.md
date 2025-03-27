@@ -2,7 +2,7 @@
 
 
 ## AIM:
-To develop a simple webserver to serve html pages.
+To develop a simple webserver to serve html pages and display the configuration details of laptop.
 
 ## DESIGN STEPS:
 ### Step 1: 
@@ -21,77 +21,55 @@ Serving the HTML pages.
 Testing the webserver.
 
 ## PROGRAM:
-```
-from http.server import HTTPServer, BaseHTTPRequestHandler
-content = """
-<!DOCTYPE html>
-<html>
+```python
+import platform
+from http.server import HTTPServer,BaseHTTPRequestHandler
+
+system_name = platform.system()
+node_name = platform.node()
+release = platform.release()
+version = platform.version()
+machine = platform.machine()
+processor = platform.processor()
+
+content='''
+<html lang="en">
 <head>
-<title>Software Companies</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My System Configuration</title>
 </head>
-<body bgcolor="cyan">
-<table border="4" cellspacing="1" cellpadling="1" height="300" width="700" bgcolor="white">
-<caption>TOP SOFTWARE COMPANIES WITH REVENUE</caption>
-		<tr>
-			<th>COMPANY</th>
-			<th>REVENUE</th>
-			<th>PERCENTAGE</th>
-		</tr>
-		<tr>
-			<td>Google</td>
-			<td>4541397</td>
-			<td>1</td>
-		</tr>
-
-		<tr>
-			<td>Meta</td>
-			<td>3216464</td>
-			<td>2</td>
-		</tr>
-
-		<tr>
-			<td>SAMSUNG</td>
-			<td>1649465</td>
-			<td>3</td>
-		</tr>
-                 <tr>
-			<td>TCS</td>
-			<td>51918518</td>
-			<td>4</td>
-		</tr>
-
-                 <tr>
-			<td>Infosys</td>
-			<td>5191587</td>
-			<td>5</td>
-		</tr>
-
-
-
-	</table>
+<body>
+    <h1>My System Configuration</h1>
+    <ul>
+        <li>'''+system_name+'''</li>
+        <li>'''+node_name+'''</li>
+        <li>'''+release+'''</li>  
+        <li>'''+version+'''</li>  
+        <li>'''+machine+'''</li>  
+        <li>'''+processor+'''</li>  
+    </ul>
 </body>
 </html>
+'''
 
-"""
-class myhandler(BaseHTTPRequestHandler):
+class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
-        print("request received")
-        self.send_response(200)
-        self.send_header('content-type', 'text/html; charset=utf-8')
+        print("Get request received...")
+        self.send_response(200) 
+        self.send_header("content-type", "text/html")       
         self.end_headers()
         self.wfile.write(content.encode())
-server_address = ('',8000)
-httpd = HTTPServer(server_address,myhandler)
-print("my webserver is running...")
+
+print("This is my webserver") 
+server_address =('',8000)
+httpd = HTTPServer(server_address,MyServer)
 httpd.serve_forever()
 ```
 
-
 ## OUTPUT:
-![Screenshot 2024-03-12 113439](https://github.com/hariharana59/simplewebserver/assets/144980130/6c35e1b2-501f-4188-b204-34200f4fb595)
-
-![Screenshot 2024-03-12 113654](https://github.com/hariharana59/simplewebserver/assets/144980130/dc0da145-92b6-4b1b-a8c2-d9f17cb05086)
-
+![alt text](image-1.png)
+![alt text](image-2.png)
 
 ## RESULT:
 The program for implementing simple webserver is executed successfully.
