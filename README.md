@@ -2,7 +2,7 @@
 
 
 ## AIM:
-To develop a simple webserver to serve html pages and display the configuration details of laptop.
+To develop a simple webserver to serve html pages.
 
 ## DESIGN STEPS:
 ### Step 1: 
@@ -21,55 +21,29 @@ Serving the HTML pages.
 Testing the webserver.
 
 ## PROGRAM:
-```python
-import platform
-from http.server import HTTPServer,BaseHTTPRequestHandler
-
-system_name = platform.system()
-node_name = platform.node()
-release = platform.release()
-version = platform.version()
-machine = platform.machine()
-processor = platform.processor()
-
-content='''
-<html lang="en">
+```
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My System Configuration</title>
+ <title>Using Python's SimpleHTTPServer Module</title>
+ <style>
+ #rectangle {
+ height: 50px;
+ width: 100px;
+ background-color: #00f28f;
+ }
+ </style>
 </head>
 <body>
-    <h1>My System Configuration</h1>
-    <ul>
-        <li>'''+system_name+'''</li>
-        <li>'''+node_name+'''</li>
-        <li>'''+release+'''</li>  
-        <li>'''+version+'''</li>  
-        <li>'''+machine+'''</li>  
-        <li>'''+processor+'''</li>  
-    </ul>
+ <h2>Rectangle served by SimpleHTTPServer</h2>
+ <div id="rectangle"></div>
 </body>
 </html>
-'''
-
-class MyServer(BaseHTTPRequestHandler):
-    def do_GET(self):
-        print("Get request received...")
-        self.send_response(200) 
-        self.send_header("content-type", "text/html")       
-        self.end_headers()
-        self.wfile.write(content.encode())
-
-print("This is my webserver") 
-server_address =('',8000)
-httpd = HTTPServer(server_address,MyServer)
-httpd.serve_forever()
 ```
 
 ## OUTPUT:
-![alt text](image-1.png)
-![alt text](image-2.png)
+![image](https://github.com/moulidharyadav/simplewebserver/assets/147078316/eb02897c-7b93-4af7-a6de-f6789ae832c2)
+
 
 ## RESULT:
 The program for implementing simple webserver is executed successfully.
