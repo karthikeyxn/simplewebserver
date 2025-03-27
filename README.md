@@ -1,66 +1,74 @@
-EX01 Developing a Simple Webserver
+# EX01 Developing a Simple Webserver
 
-AIM:
+
+## AIM:
 To develop a simple webserver to serve html pages.
 
-DESIGN STEPS:
-Step 1:
+## DESIGN STEPS:
+### Step 1: 
 HTML content creation.
 
-Step 2:
+### Step 2:
 Design of webserver workflow.
 
-Step 3:
+### Step 3:
 Implementation using Python code.
 
-Step 4:
+### Step 4:
 Serving the HTML pages.
 
-Step 5:
+### Step 5:
 Testing the webserver.
 
-PROGRAM:
+## PROGRAM:
+```
 from http.server import HTTPServer, BaseHTTPRequestHandler
 content = """
+<!DOCTYPE html>
 <html>
 <head>
-<title>Top five software companies in revenue</title>
+<title>Software Companies</title>
 </head>
-<body>
-<h1 align="center">
-TOP FIVE SOFTWARE COMPANIES IN REVENUE</h1>
-<table align="center" border="2" cellspacing="5" cellpadding="5" width="800" height="500">
-<tr>
-<th>RANK</th>
-<th>COMPANY NAME</th>
-<th>REVENUE</th>
-</tr>
-<tr>
-<td>1</td>
-<td>Apple(AAPL)</td>
-<td>$385.70 B </td>
-</tr>
-<tr>
-<td>2</td>
-<td>Alphabet(Google)</td>
-<td>$307.39 B</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Microsoft</td>
-<td>$227.58 B</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Ibm</td>
-<td>$61.85 B</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Oracle</td>
-<td>$51.62 B</td>
-</tr>
-</table>
+<body bgcolor="cyan">
+<table border="4" cellspacing="1" cellpadling="1" height="300" width="700" bgcolor="white">
+<caption>TOP SOFTWARE COMPANIES WITH REVENUE</caption>
+		<tr>
+			<th>COMPANY</th>
+			<th>REVENUE</th>
+			<th>PERCENTAGE</th>
+		</tr>
+		<tr>
+			<td>Google</td>
+			<td>4541397</td>
+			<td>1</td>
+		</tr>
+
+		<tr>
+			<td>Meta</td>
+			<td>3216464</td>
+			<td>2</td>
+		</tr>
+
+		<tr>
+			<td>SAMSUNG</td>
+			<td>1649465</td>
+			<td>3</td>
+		</tr>
+                 <tr>
+			<td>TCS</td>
+			<td>51918518</td>
+			<td>4</td>
+		</tr>
+
+                 <tr>
+			<td>Infosys</td>
+			<td>5191587</td>
+			<td>5</td>
+		</tr>
+
+
+
+	</table>
 </body>
 </html>
 
@@ -76,10 +84,14 @@ server_address = ('',8000)
 httpd = HTTPServer(server_address,myhandler)
 print("my webserver is running...")
 httpd.serve_forever()
-OUTPUT:
-alt text
+```
 
-alt text
 
-RESULT:
+## OUTPUT:
+![Screenshot 2024-03-12 113439](https://github.com/hariharana59/simplewebserver/assets/144980130/6c35e1b2-501f-4188-b204-34200f4fb595)
+
+![Screenshot 2024-03-12 113654](https://github.com/hariharana59/simplewebserver/assets/144980130/dc0da145-92b6-4b1b-a8c2-d9f17cb05086)
+
+
+## RESULT:
 The program for implementing simple webserver is executed successfully.
